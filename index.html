@@ -3,14 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Fetcher</title>
+    <title>Movie Guessing Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js" defer></script>
 </head>
 <body>
-    <input type="text" id="movieTitle" placeholder="Enter Movie title exactly">
-    <button onclick="fetchData()">Fetch Title</button><br>
+    <header id="stats-board">
+        <h1>Movie Guessing Game</h1>
+        <p aria-live="polite">Movie <span id="movieCounter">1</span> of 10</p>
+    </header>
 
-    <img src="" alt="Movie Poster" id="moviePoster" style="display: none">
+    <hr>
 
-    <script src="index.js"></script>
+    <main>
+        <section id="clues-board" aria-labelledby="clues-heading">
+            <h2 id="clues-heading">Clues</h2>
+            <p>
+                <button type="button" onclick="buyClue('Year', 1)">Year (1 pt)</button>
+                <span id="display-Year">???</span>
+            </p>
+            <p>
+                <button type="button" onclick="buyClue('Director', 2)">Director (2 pts)</button>
+                <span id="display-Director">???</span>
+            </p>
+            <p>
+                <button type="button" onclick="buyClue('Actors', 3)">Cast (3 pts)</button>
+                <span id="display-Actors">???</span>
+            </p>
+            <p>
+                <button type="button" onclick="buyClue('Plot', 4)">Plot (4 pts)</button>
+                <span id="display-Plot">???</span>
+            </p>
+        </section>
+
+        <hr>
+
+        <section id="guessing-area" aria-labelledby="guessing-heading">
+            <h2 id="guessing-heading">Make your guess</h2>
+            <p>Points: <output id="pointDisplay">20</output></p>
+            <label for="guessInput">Movie title</label>
+            <input type="text" id="guessInput" placeholder="Guess the movie...">
+            <button type="button" onclick="submitGuess()">Submit</button>
+            <p id="feedbackMessage" aria-live="polite"></p>
+        </section>
+    </main>
 </body>
 </html>
