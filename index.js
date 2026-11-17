@@ -1,31 +1,19 @@
-/*
+const apiKey = "caae5327";
+
 async function fetchData() {
     try {
-
-        const pokemonName = document.getElementById("pokemonName").value.toLowerCase();
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-
-        if(!response.ok) {
-            throw new Error("Could not fetch resourse")
-        }
-
-        const data = await response.json();
-        const pokemonSprite = data.sprites.front_default;
-        const imgElement = document.getElementById("pokemonSprite");
-
-        imgElement.src = pokemonSprite;
-        imgElement.style.display = "block";    
-    }
-    catch(error) {
-        console.error(error);
-    }
-}
-*/
-const apiKey = "12345";
-async function fetchData() {
-    try {
-        const movieTitle = document.getElementById("movieTitle");
+        const movieTitle = document.getElementById("movieTitle").value.trim();
         const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&t=${encodeURIComponent(movieTitle)}`)
+
+        if (!response.ok) {
+            throw new Error("Could not fetch resource")
+        }
+        const data = await response.json();
+        const moviePoster = data.Poster;
+        const imgElement = document.getElementById("moviePoster");
+
+        imgElement.src = moviePoster;
+        imgElement.style.display = "block";
     }
     catch(error) {
         console.error(error);
