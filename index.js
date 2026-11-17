@@ -1,3 +1,4 @@
+/*
 async function fetchData() {
     try {
 
@@ -14,6 +15,17 @@ async function fetchData() {
 
         imgElement.src = pokemonSprite;
         imgElement.style.display = "block";    
+    }
+    catch(error) {
+        console.error(error);
+    }
+}
+*/
+const apiKey = "12345";
+async function fetchData() {
+    try {
+        const movieTitle = document.getElementById("movieTitle");
+        const response = await fetch(`https://www.omdbapi.com/?apikey=${apiKey}&t=${encodeURIComponent(movieTitle)}`)
     }
     catch(error) {
         console.error(error);
