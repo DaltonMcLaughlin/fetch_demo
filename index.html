@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Guessing Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <script src="index.js" defer></script>
 </head>
@@ -13,38 +16,38 @@
         <p aria-live="polite">Movie <span id="movieCounter">1</span> of 10</p>
     </header>
 
-    <hr>
-
     <main>
-        <section id="clues-board" aria-labelledby="clues-heading">
-            <h2 id="clues-heading">Clues</h2>
-            <p>
-                <button type="button" onclick="buyClue('Year', 1)">Year (1 pt)</button>
-                <span id="display-Year">???</span>
-            </p>
-            <p>
-                <button type="button" onclick="buyClue('Director', 2)">Director (2 pts)</button>
-                <span id="display-Director">???</span>
-            </p>
-            <p>
-                <button type="button" onclick="buyClue('Actors', 3)">Cast (3 pts)</button>
-                <span id="display-Actors">???</span>
-            </p>
-            <p>
-                <button type="button" onclick="buyClue('Plot', 4)">Plot (4 pts)</button>
-                <span id="display-Plot">???</span>
-            </p>
-        </section>
-
-        <hr>
-
         <section id="guessing-area" aria-labelledby="guessing-heading">
             <h2 id="guessing-heading">Make your guess</h2>
             <p>Points: <output id="pointDisplay">20</output></p>
-            <label for="guessInput">Movie title</label>
-            <input type="text" id="guessInput" placeholder="Guess the movie...">
+            <input type="text" id="guessInput" aria-label="Movie title" placeholder="Guess the movie...">
             <button type="button" onclick="submitGuess()">Submit</button>
             <p id="feedbackMessage" aria-live="polite"></p>
+        </section>
+
+        <section id="clues-board" aria-label="Clue options">
+            <button type="button" onclick="buyClue('Year', 1)">
+                <span>Year (1 pt)</span>
+                <span id="display-Year" aria-live="polite"></span>
+            </button>
+            <button type="button" onclick="buyClue('Director', 2)">
+                <span>Director (2 pts)</span>
+                <span id="display-Director" aria-live="polite"></span>
+            </button>
+            <button type="button" onclick="buyClue('Actors', 3)">
+                <span>Cast (3 pts)</span>
+                <span id="display-Actors" aria-live="polite"></span>
+            </button>
+            <button type="button" onclick="buyClue('Plot', 4)">
+                <span>Plot (4 pts)</span>
+                <span id="display-Plot" aria-live="polite"></span>
+            </button>
+        </section>
+
+        <section id="movie-result" aria-label="Movie result" aria-live="polite" hidden>
+            <img id="moviePoster" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt="" hidden>
+            <p id="posterUnavailable" hidden>Poster unavailable.</p>
+            <button type="button" id="nextMovieButton" onclick="advanceGame()">Next movie</button>
         </section>
     </main>
 </body>

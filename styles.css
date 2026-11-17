@@ -1,0 +1,176 @@
+:root {
+    /* Change these colors to customize the palette. */
+    --page-color: #23272B;
+    --alt-page-color: #181C20;
+    --card-color: #3A434B;
+    --text-color: #ffffff;
+    --main-color: #00E054;
+    --year-tile: #00E054;
+    --director-tile: #FFB700;
+    --actors-tile: #FF3C3C;
+    --plot-tile: #00B3FF;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--page-color);
+    color: var(--text-color);
+    font-family: "Montserrat", sans-serif;
+}
+
+#stats-board {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+main {
+    width: 100%;
+    margin: 0;
+}
+
+section {
+    margin: 0;
+    padding: 2rem 1rem;
+}
+
+#guessing-area {
+    background: var(--alt-page-color);
+    text-align: center;
+}
+
+#clues-board {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    padding-inline: 1.5rem;
+    background: var(--page-color);
+    font-size: clamp(0.9rem, 2vw, 1.4rem);
+}
+
+#movie-result {
+    background: var(--alt-page-color);
+    text-align: center;
+}
+
+#moviePoster {
+    display: block;
+    max-width: min(100%, 28rem);
+    max-height: 40rem;
+    margin: 1rem auto;
+}
+
+#moviePoster[hidden] {
+    display: none;
+}
+
+button,
+input {
+    padding: 0.6rem;
+    border: 1px solid var(--main-color);
+    border-radius: 0.4rem;
+    font: inherit;
+}
+
+button {
+    background: var(--main-color);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 3px 0 rgb(0 0 0 / 20%);
+}
+
+#clues-board > button {
+    display: flex;
+    box-sizing: border-box;
+    width: 20rem;
+    height: 10rem;
+    justify-self: center;
+    min-height: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0.1rem;
+    border: 0;
+    border-radius: 0.6rem;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1;
+    overflow: auto;
+}
+
+#clues-board > button:nth-of-type(1) {
+    background: var(--year-tile);
+    justify-self: end;
+}
+
+#clues-board > button:nth-of-type(2) {
+    background: var(--director-tile);
+    justify-self: start;
+}
+
+#clues-board > button:nth-of-type(3) {
+    background: var(--actors-tile);
+    justify-self: end;
+}
+
+#clues-board > button:nth-of-type(4) {
+    background: var(--plot-tile);
+    justify-self: start;
+}
+
+#clues-board > button:nth-of-type(4) > span[id] {
+    font-size: 1.3rem;
+}
+
+#clues-board > button > span[id] {
+    display: none;
+}
+
+#clues-board > button.revealed > span:first-child {
+    display: none;
+}
+
+#clues-board > button.revealed > span[id] {
+    display: block;
+}
+
+#clues-board > button span + span {
+    margin-left: 0;
+    text-align: center;
+}
+
+button:hover {
+    filter: brightness(1.12);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1000px) {
+    #clues-board > button {
+        width: 16rem;
+        height: 8rem;
+        font-size: 1.6rem;
+    }
+
+    #clues-board > button:nth-of-type(4) > span[id] {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    #clues-board {
+        gap: 0.5rem;
+        padding-inline: 1rem;
+    }
+
+    #clues-board > button {
+        width: min(12rem, 100%);
+        height: 6rem;
+        font-size: 1.2rem;
+    }
+
+    #clues-board > button:nth-of-type(4) > span[id] {
+        font-size: 0.9rem;
+    }
+}
